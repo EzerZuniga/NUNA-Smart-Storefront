@@ -3,8 +3,7 @@ import Card from '../common/Card';
 import Button from '../common/Button';
 import Badge from '../common/Badge';
 import { useCart } from '../../context/CartContext';
-
-const formatCurrency = (amount) => `S/ ${amount.toFixed(2)}`;
+import { formatCurrency } from '../../utils/formatters';
 
 const sustainabilityCopy = {
   Ropa: 'Materia prima de origen ético, trazabilidad total y tintes botánicos sin tóxicos.',

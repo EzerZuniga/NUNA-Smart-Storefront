@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import { useCart } from '../context/CartContext';
-
-const formatCurrency = (amount) => `S/ ${amount.toFixed(2)}`;
+import { formatCurrency } from '../utils/formatters';
 
 export default function Cart() {
   const { items, total, clearCart } = useCart();

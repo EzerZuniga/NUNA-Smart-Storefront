@@ -4,7 +4,8 @@ const CartContext = createContext();
 
 const initialState = {
   items: [],
-  lastAddedId: null
+  lastAddedId: null,
+  lastAddedAt: null
 };
 
 function cartReducer(state, action) {
@@ -26,13 +27,15 @@ function cartReducer(state, action) {
 
       return {
         items,
-        lastAddedId: product.id
+        lastAddedId: product.id,
+        lastAddedAt: Date.now()
       };
     }
     case 'CLEAR_CART':
       return {
         items: [],
-        lastAddedId: null
+        lastAddedId: null,
+        lastAddedAt: null
       };
     default:
       return state;
@@ -59,11 +62,12 @@ export function CartProvider({ children }) {
     () => ({
       items: state.items,
       lastAddedId: state.lastAddedId,
+      lastAddedAt: state.lastAddedAt,
       addItem,
       clearCart,
       total
     }),
-    [state.items, state.lastAddedId, total]
+    [state.items, state.lastAddedId, state.lastAddedAt, total]
   );
 
   return (

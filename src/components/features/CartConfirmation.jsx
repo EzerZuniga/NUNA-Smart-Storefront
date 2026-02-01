@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
 import Card from '../common/Card';
 import { useCart } from '../../context/CartContext';
-
-const formatCurrency = (amount) => `S/ ${amount.toFixed(2)}`;
+import { formatCurrency } from '../../utils/formatters';
 
 export default function CartConfirmation() {
-  const { items, lastAddedId, total } = useCart();
+  const { items, lastAddedAt, total } = useCart();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (lastAddedId) {
+    if (lastAddedAt) {
       setIsVisible(true);
       const timeout = setTimeout(() => setIsVisible(false), 4000);
       return () => clearTimeout(timeout);
     }
-  }, [lastAddedId]);
+  }, [lastAddedAt]);
 
   if (!isVisible || items.length === 0) {
     return null;
   }
 
   return (
-    <div className="cart-confirmation">
+    <div className="cart-confirmation" role="status" aria-live="polite">
       <Card className="cart-confirmation-card">
         <h4>Carrito actualizado ✔️</h4>
         <table>

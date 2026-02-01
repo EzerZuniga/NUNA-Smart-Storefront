@@ -2,14 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
 import { products } from '../../data/mockData';
+import { formatCurrency } from '../../utils/formatters';
 
 const openingMessage = {
   text:
     '¡Hola! Soy Nuna, tu asistente multidepartamento. Puedo contarte sobre Ropa sostenible, Gadgets conscientes y Accesorios con propósito. Recuerda: Lima 24-48h, Provincias 3-5 días vía Olva/Shalom.',
   sender: 'bot'
 };
-
-const formatCurrency = (amount) => `S/ ${amount.toFixed(2)}`;
 
 export default function ChatNuna() {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,7 +122,7 @@ export default function ChatNuna() {
       </Button>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Nuna – Smart Storefront">
         <div className="chat-container">
-          <div className="messages">
+          <div className="messages" role="log" aria-live="polite" aria-relevant="additions">
             {messages.map((msg, idx) => (
               <div key={idx} className={`message ${msg.sender}`}>
                 {msg.text}

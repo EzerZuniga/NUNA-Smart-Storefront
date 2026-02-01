@@ -3,8 +3,7 @@ import { products } from '../data/mockData';
 import Button from '../components/common/Button';
 import InventoryStatus from '../components/features/InventoryStatus';
 import { useCart } from '../context/CartContext';
-
-const formatCurrency = (amount) => `S/ ${amount.toFixed(2)}`;
+import { formatCurrency } from '../utils/formatters';
 
 export default function ProductDetail() {
   const { id } = useParams();

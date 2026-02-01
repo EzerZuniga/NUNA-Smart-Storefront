@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
+import Login from './pages/Login';
 import ChatNuna from './components/features/ChatNuna';
 import { CartProvider } from './context/CartContext';
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           <ChatNuna />
         </Layout>
